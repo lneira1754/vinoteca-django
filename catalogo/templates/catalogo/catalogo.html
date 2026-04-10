@@ -1,0 +1,21 @@
+{% extends 'catalogo/base.html' %}
+
+{% block title %}Catálogo de Vinos{% endblock title %}
+
+{% block content %}
+    <h3>Nuestra Bodega</h3>
+    
+    <ul class="vinoteca-grid">
+        {% for vino in vinos %}
+            <li>
+                <strong>{{ vino.nombre }}</strong>
+                
+                <em>{{ vino.tipo }}</em>
+                
+                <span>${{ vino.precio }}</span>
+            </li>
+        {% empty %}
+            <li class="empty-message">Actualmente no tenemos stock disponible.</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
