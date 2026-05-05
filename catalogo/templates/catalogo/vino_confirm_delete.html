@@ -1,0 +1,14 @@
+{% extends 'catalogo/base.html' %}
+
+{% block title %}Confirmar Eliminación{% endblock title %}
+
+{% block content %}
+    <h3>Eliminar Vino</h3>
+    <p>¿Estás seguro de que deseas eliminar el vino "<strong>{{ object.nombre }}</strong>"?</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn-delete">Confirmar Eliminación</button>
+        <a href="{% url 'catalogo:catalogo' %}" class="btn-cancel">Cancelar</a>
+    </form>
+{% endblock content %}

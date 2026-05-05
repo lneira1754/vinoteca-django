@@ -3,16 +3,28 @@
 {% block title %}Catálogo de Vinos{% endblock title %}
 
 {% block content %}
-    <h3>Nuestra Bodega</h3>
+    <div class="header-actions">
+        <h3>Nuestra Bodega</h3>
+        <a href="{% url 'catalogo:vino_create' %}" class="btn-add">Agregar Vino</a>
+    </div>
     
     <ul class="vinoteca-grid">
         {% for vino in vinos %}
             <li>
-                <strong>{{ vino.nombre }}</strong>
-                
-                <em>{{ vino.tipo }}</em>
-                
-                <span>${{ vino.precio }}</span>
+                <div class="vino-info">
+                    <strong>{{ vino.nombre }}</strong>
+                    {% if vino.bodega %}
+                        <small>({{ vino.bodega.nombre }})</small>
+                    {% endif %}
+                    
+                    <em>{{ vino.tipo }}</em>
+                    
+                    <span>${{ vino.precio }}</span>
+                </div>
+                <div class="vino-actions">
+                    <a href="{% url 'catalogo:vino_update' vino.pk %}" class="btn-edit">Editar</a>
+                    <a href="{% url 'catalogo:vino_delete' vino.pk %}" class="btn-delete">Eliminar</a>
+                </div>
             </li>
         {% empty %}
             <li class="empty-message">Actualmente no tenemos stock disponible.</li>

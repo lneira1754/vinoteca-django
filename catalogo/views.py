@@ -1,20 +1,30 @@
-from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Vino # Importamos el modelo
-
-# def catalogo(request):
-#     vinos = [
-#         'Pinot Noir',
-#         'Chardonnay',
-#         'Merlot',
-#         'Zinfandel',
-#         'Cabernet Sauvignon']
-#     return render(request, 'catalogo/catalogo.html', {'vinos': vinos})
-
-def catalogo(request):
-    vinos_db = Vino.objects.all() # Trae todos los vinos de la DB
-    return render(request, 'catalogo/catalogo.html', {'vinos': vinos_db})
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from .models import Vino
+from .forms import VinoForm
 
 def index(request):
     return render(request, 'catalogo/index.html')
 
+class VinoListView(ListView):
+    model = Vino
+    template_name = 'catalogo/catalogo.html'
+    context_object_name = 'vinos'
+
+class VinoCreateView(CreateView):
+    model = Vino
+    form_class = VinoForm
+    template_name = 'catalogo/vino_form.html'
+    success_url = reverse_lazy('catalogo:catalogo')
+
+class VinoUpdateView(UpdateView):
+    model = Vino
+    form_class = VinoForm
+    template_name = 'catalogo/vino_form.html'
+    success_url = reverse_lazy('catalogo:catalogo')
+
+class VinoDeleteView(DeleteView):
+    model = Vino
+    template_name = 'catalogo/vino_confirm_delete.html'
+    success_url = reverse_lazy('catalogo:catalogo')
