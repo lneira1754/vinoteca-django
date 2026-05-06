@@ -4,7 +4,7 @@ from .forms import VinoForm
 
 def index(request):
     return render(request, 'catalogo/index.html')
-
+#metodo
 def vinos(request):
     vinos = Vino.objects.all()
     return render(request, 'catalogo/catalogo.html', {'vinos':vinos})    
