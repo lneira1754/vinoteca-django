@@ -6,7 +6,7 @@ app_name = 'catalogo'
 urlpatterns = [
     path('', views.index, name='index'),
     path('catalogo/', views.VinoListView.as_view(), name='catalogo'),
-    path('vino/nuevo/', views.VinoCreateView.as_view(), name='vino_create'),
-    path('vino/<int:pk>/editar/', views.VinoUpdateView.as_view(), name='vino_update'),
-    path('vino/<int:pk>/eliminar/', views.VinoDeleteView.as_view(), name='vino_delete'),
+    path('vino/nuevo/', views.vino_create, name='vino_create'),
+    path('vino/<int:id>/editar/', views.vino_update, name='vino_update'),
+    path('vino/<int:id>/eliminar/', views.vino_delete, name='vino_delete'),
 ]
