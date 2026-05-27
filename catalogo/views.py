@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse_lazy
 from django.views.generic import ListView
 from .models import Vino
 from .forms import VinoForm
@@ -11,6 +10,8 @@ class VinoListView(ListView):
     model = Vino
     template_name = 'catalogo/catalogo.html'
     context_object_name = 'vinos'
+
+
 
 def vino_create(request):
     if request.method == 'POST':
@@ -41,5 +42,5 @@ def vino_delete(request, id):
     vino = get_object_or_404(Vino, id=id)
     if request.method == 'POST':
         vino.delete()
-        return redirect(Vino)
+        return redirect('catalogo:catalogo')
     return render(request, 'catalogo/vino_confirm_delete.html', {'vino': vino})
