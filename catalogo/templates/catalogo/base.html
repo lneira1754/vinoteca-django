@@ -1,23 +1,39 @@
 {% load static %}
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vinoteca Don Lucas - Descubre nuestra cuidada selección de los mejores vinos y bodegas nacionales e internacionales.">
     <link rel="stylesheet" href="{% static 'catalogo/styles.css' %}">
-    <title>{% block title %}  {% endblock title %}</title>
+    <title>{% block title %}Vinoteca Don Lucas{% endblock title %}</title>
 </head>
 <body>
-    <nav>
-        <h3>Menu</h3>
-        <ul>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/catalogo">Catalogo</a></li>
-        </ul>
-    </nav>
-    {% block content %}
+    <header>
+        <div class="navbar-container">
+            <a href="/" class="brand-logo" id="brand-link">
+                <!-- SVG Icon of Wine Glass/Bottle for premium branding -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                    <path d="M12 2C11.45 2 11 2.45 11 3v7.42c-2.31.42-4.09 2.22-4.43 4.58H5v2h2v4c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-4h2v-2h-1.57c-.34-2.36-2.12-4.16-4.43-4.58V3c0-.55-.45-1-1-1zm3.93 12H8.07c.43-1.42 1.76-2.5 3.32-2.5 1.56 0 2.89 1.08 3.32 2.5zM9 17h6v4H9v-4z"/>
+                </svg>
+                <span class="brand-name">Vinoteca Don Lucas</span>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="/" class="nav-link" id="nav-home">Inicio</a></li>
+                    <li><a href="/catalogo" class="nav-link" id="nav-catalog">Catálogo de Vinos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    {% endblock content %}
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Vinoteca Don Lucas. Todos los derechos reservados. | Pasión por el buen vino.</p>
+    </footer>
 </body>
 </html>
