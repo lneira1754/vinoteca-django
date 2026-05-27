@@ -1,0 +1,13 @@
+{% extends 'catalogo/base.html' %}
+
+{% block title %}Inicio - Vinoteca Don Lucas{% endblock title %}
+
+{% block content %}
+<div class="hero-section">
+    <h1 class="hero-title">El Arte de Seleccionar el Buen Vino</h1>
+    <p class="hero-subtitle">Descubre una colección única de las mejores bodegas. Vinos de autor, cepas seleccionadas y el maridaje perfecto para tus grandes momentos.</p>
+    <a href="{% url 'catalogo:catalogo' %}" class="hero-cta" id="cta-explore">
+        Explorar el Catálogo
+    </a>
+</div>
+{% endblock content %}

@@ -1,0 +1,19 @@
+{% extends 'catalogo/base.html' %}
+
+{% block title %}{% if form.instance.pk %}Editar Vino - Vinoteca Don Lucas{% else %}Nuevo Vino - Vinoteca Don Lucas{% endif %}{% endblock title %}
+
+{% block content %}
+<div class="form-card">
+    <h3>{% if form.instance.pk %}Editar Vino: {{ form.instance.nombre }}{% else %}Agregar Nuevo Vino{% endif %}</h3>
+    
+    <form method="post" id="vino-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <div class="form-actions">
+            <button type="submit" class="btn-save" id="btn-submit-vino">Guardar</button>
+            <a href="{% url 'catalogo:catalogo' %}" class="btn-cancel" id="btn-cancel-vino">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock content %}

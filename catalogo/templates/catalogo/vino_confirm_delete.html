@@ -1,0 +1,16 @@
+{% extends 'catalogo/base.html' %}
+
+{% block title %}Confirmar Eliminación - Vinoteca Don Lucas{% endblock title %}
+
+{% block content %}
+<div class="delete-card">
+    <h3>¿Eliminar Vino?</h3>
+    <p>¿Estás seguro de que deseas retirar "<strong>{{ vino.nombre }}</strong>" de la bodega? Esta acción no se puede deshacer.</p>
+    
+    <form method="post" id="delete-form">
+        {% csrf_token %}
+        <button type="submit" class="btn-delete" id="btn-confirm-delete">Confirmar Eliminación</button>
+        <a href="{% url 'catalogo:catalogo' %}" class="btn-cancel" id="btn-cancel-delete">Cancelar</a>
+    </form>
+</div>
+{% endblock content %}
