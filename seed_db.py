@@ -5,7 +5,9 @@ import django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'vinoteca.settings')
 django.setup()
 
-from catalogo.models import Bodega, Vino, UsuarioPersonalizado
+from catalogo.models import Bodega, Vino
+from usuarios.models import UsuarioPersonalizado
+
 
 def seed():
     print("Iniciando la siembra de base de datos (seeding)...")

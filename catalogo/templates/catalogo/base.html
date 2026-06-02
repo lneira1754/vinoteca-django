@@ -22,6 +22,18 @@
                 <ul class="nav-menu">
                     <li><a href="/" class="nav-link" id="nav-home">Inicio</a></li>
                     <li><a href="/catalogo" class="nav-link" id="nav-catalog">Catálogo de Vinos</a></li>
+                    {% if user.is_authenticated %}
+                        <li style="color: var(--color-cream); font-weight: 500;">Hola, {{ user.username }}</li>
+                        <li>
+                            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="nav-link" style="background: none; border: none; cursor: pointer; display: inline; font: inherit; padding: 0;">Salir</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}" class="nav-link" id="nav-login">Entrar</a></li>
+                        <li><a href="{% url 'register' %}" class="nav-link" id="nav-register">Registrarse</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>

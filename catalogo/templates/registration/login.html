@@ -1,0 +1,21 @@
+{% extends 'catalogo/base.html' %}
+
+{% block title %}Iniciar Sesión - Vinoteca Don Lucas{% endblock title %}
+
+{% block content %}
+<div class="form-card">
+    <h3>Iniciar Sesión</h3>
+    
+    <form method="post" id="login-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <div class="form-actions" style="flex-direction: column; gap: 0.75rem;">
+            <button type="submit" class="btn-save" id="btn-submit-login">Ingresar</button>
+            <p style="text-align: center; margin-top: 1rem; font-size: 0.95rem;">
+                ¿No tienes una cuenta aún? <a href="{% url 'register' %}" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Regístrate aquí</a>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock content %}
