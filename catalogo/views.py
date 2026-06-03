@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Vino
 from .forms import VinoForm
 
@@ -9,6 +10,7 @@ def vinos(request):
     vinos = Vino.objects.all()
     return render(request, 'catalogo/catalogo.html', {'vinos':vinos})    
 
+@login_required
 def vino_create(request):
     if request.method == 'POST':
         form = VinoForm(request.POST)
@@ -20,7 +22,7 @@ def vino_create(request):
     else:
         form = VinoForm()
     return render(request, 'catalogo/vino_form.html', {'form': form})
-
+@user_passes_test(lambda u: u.is_staff)
 def vino_update(request, id):
     vino = get_object_or_404(Vino, id=id)
     if request.method == 'POST':
@@ -33,7 +35,7 @@ def vino_update(request, id):
     else:
         form = VinoForm(instance=vino)
     return render(request, 'catalogo/vino_form.html', {'form': form})
-
+@user_passes_test(lambda u: u.is_superuser)
 def vino_delete(request, id):
     vino = get_object_or_404(Vino, id=id)
     if request.method == 'POST':

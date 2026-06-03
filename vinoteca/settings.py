@@ -130,3 +130,7 @@ STATICFILES_DIRS = [
 ]
 
 AUTH_USER_MODEL = 'usuarios.UsuarioPersonalizado'
+
+# logout redirige a la página de inicio
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
